@@ -60,6 +60,8 @@ require("autoclose").setup(config)
 require('lint').linters_by_ft = {
   -- javascript = {'quick-lint-js'},
   python = {'pylint'},
+  javascript = {'eslint'},
+  typescript = {'typescript-language-server'},
   json = {'jsonlint'},
   markdown = {'vale'},
   lua = {'luacheck'}
@@ -74,12 +76,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
 
 -- search
 local builtin = require('telescope.builtin')
