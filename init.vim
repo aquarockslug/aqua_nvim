@@ -30,6 +30,7 @@ call plug#end()
 
 colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
+let mapleader=","
 
 map <C-h> :wincmd h<CR>
 map <C-j> :wincmd j<CR>
@@ -40,9 +41,8 @@ map <F1> :Neoformat<CR> :w<CR>
 map <F2> :lua _lazygit()<CR>
 map <F3> :Telescope current_buffer_fuzzy_find<CR>
 map <F4> :Telescope treesitter<CR>
-map <F5> :TermExec direction=vertical dir=./ border=double size=70 cmd=''<CR>
-map <F6> :DevdocsOpenCurrent<CR>
 
+map <F9> :DevdocsOpenCurrent<CR>
 map <F10> :Goyo<CR>
 " map <F11> fullscreen
 map <F12> :wq<CR>
