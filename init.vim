@@ -1,10 +1,8 @@
-set number
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'm4xshen/autoclose.nvim'
 Plug 'startup-nvim/startup.nvim',
-Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sbdchd/neoformat'
@@ -12,7 +10,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'NvChad/nvim-colorizer.lua'
-Plug 'sitiom/nvim-numbertoggle'
 Plug 'numToStr/Comment.nvim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'mfussenegger/nvim-lint'
@@ -30,6 +27,7 @@ call plug#end()
 
 colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
+set number
 let mapleader=","
 
 " tmux movement
@@ -45,13 +43,10 @@ map <left> <C-w><left>
 map <right> <C-w><right>
 
 " function keys
-map <F1> :Neoformat<CR> :w<CR>
-map <F2> :lua _lazygit()<CR>
+map <F1> :lua _lazygit()<CR>
+map <F2> :Neoformat<CR> :w<CR>
 map <F3> :Telescope current_buffer_fuzzy_find<CR>
 map <F4> :Telescope treesitter<CR>
-map <F9> :DevdocsOpenCurrent<CR>
-map <F10> :Goyo<CR>
-" map <F11> fullscreen
-map <F12> :wq<CR>
+map <F5> :wq<CR>
 
 let g:airline_theme='soda'
