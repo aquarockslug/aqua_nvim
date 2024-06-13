@@ -23,11 +23,13 @@ Plug 'luckasRanarison/nvim-devdocs'
 Plug 'habamax/vim-godot'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tadmccorkle/markdown.nvim'
+Plug 'ellisonleao/glow.nvim'
 call plug#end()
 
 colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
 set number
+set relativenumber
 let mapleader=","
 
 " tmux movement

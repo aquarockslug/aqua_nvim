@@ -1,13 +1,16 @@
+local vim = vim
 require('telescope').setup()
 require("nvim-treesitter").setup()
 require('markdown').setup()
-
 require("nvim-devdocs").setup()
 -- require('dap-python').setup('/usr/bin/python')
 -- require('dapui').setup()
 require('Comment').setup()
 require("startup").setup({theme = "dashboard"})
-
+require('glow').setup({
+	width_ratio = 1,
+	height_ratio = 1,
+})
 require("toggleterm").setup{
 	shade_terminals = true,
 	float_opts = {
@@ -15,7 +18,7 @@ require("toggleterm").setup{
 		height = 5,
 	}
 }
--- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
 	cmd = "lazygit",
@@ -27,7 +30,6 @@ local lazygit = Terminal:new({
 	hidden = true,
 })
 function _lazygit() lazygit:toggle() end
-
 require("autoclose").setup({
    keys = {
       ["("] = { escape = false, close = true, pair = "()" },
@@ -52,6 +54,7 @@ require("autoclose").setup({
    },
 })
 
+-- linting
 require('lint').linters_by_ft = {
   python = {'pylint'},
   javascript = {'eslint'},
@@ -60,21 +63,16 @@ require('lint').linters_by_ft = {
   markdown = {'vale'},
   lua = {'luacheck'}
 }
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function() require("lint").try_lint() end,
-})
-
--- Setup language servers.
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function() require("lint").try_lint() end,
+})
 
 -- search
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
