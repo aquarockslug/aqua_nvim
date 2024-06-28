@@ -3,10 +3,16 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'm4xshen/autoclose.nvim'
 Plug 'startup-nvim/startup.nvim',
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'sbdchd/neoformat'
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'NvChad/nvim-colorizer.lua'
@@ -24,12 +30,15 @@ Plug 'habamax/vim-godot'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tadmccorkle/markdown.nvim'
 Plug 'ellisonleao/glow.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 call plug#end()
 
 colorscheme dracula
 hi Normal guibg=NONE ctermbg=NONE
 set number
 set relativenumber
+set autochdir
 let mapleader=","
 
 " tmux movement
@@ -50,5 +59,3 @@ map <F2> :Neoformat<CR> :w<CR>
 map <F3> :Telescope current_buffer_fuzzy_find<CR>
 map <F4> :Telescope treesitter<CR>
 map <F5> :wq<CR>
-
-let g:airline_theme='soda'
