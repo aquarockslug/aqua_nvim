@@ -1,6 +1,6 @@
 local vim = vim
 require('telescope').setup()
-require("nvim-treesitter").setup()
+require("nvim-treesitter").setup({auto_install = true})
 require('markdown').setup()
 require("nvim-devdocs").setup()
 require('Comment').setup()
@@ -49,7 +49,7 @@ local lint = require('lint')
 lint.linters_by_ft = {
     python = {'pylint'},
     javascript = {'eslint'},
-    typescript = {'typescript-language-server'},
+    -- typescript = {'typescript-language-server'},
     json = {'jsonlint'},
     markdown = {'vale'},
     lua = {'luacheck'}

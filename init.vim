@@ -31,7 +31,8 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tadmccorkle/markdown.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-web-devicons' 	
+Plug 'echasnovski/mini.tabline'
 call plug#end()
 
 colorscheme dracula
