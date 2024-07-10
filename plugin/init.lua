@@ -1,9 +1,10 @@
 local vim = vim
 
 require('telescope').setup()
-require('vstask').setup()
-require('telescope').load_extension('vstask')
--- require('telescope').load_extension('fzf')
+-- require('vstask').setup()
+require("telescope").load_extension "file_browser"
+-- require('telescope').load_extension "vstask"
+-- require('telescope').load_extension "fzf"
 
 require("nvim-treesitter").setup({auto_install = true})
 require('markdown').setup()
