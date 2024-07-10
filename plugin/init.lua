@@ -1,18 +1,25 @@
 local vim = vim
+
 require('telescope').setup()
+require('vstask').setup()
+require('telescope').load_extension('vstask')
+-- require('telescope').load_extension('fzf')
+
 require("nvim-treesitter").setup({auto_install = true})
 require('markdown').setup()
 require("nvim-devdocs").setup()
 require('Comment').setup()
-require("startup").setup({theme = "dashboard"})
+require("minintro").setup({color = "#5fff87"})
 require('lualine').setup({theme = 'dracula'})
 require('glow').setup({width_ratio = 1, height_ratio = 1})
 require('neoscroll').setup({easing = "quadratic"})
+
+-- terminal
 require("toggleterm").setup {
     shade_terminals = true,
     float_opts = {border = 'curved', height = 5}
 }
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+-- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
     cmd = "lazygit",
@@ -21,6 +28,8 @@ local lazygit = Terminal:new({
     hidden = true
 })
 function _lazygit() lazygit:toggle() end
+
+-- autoclose
 require("autoclose").setup({
     keys = {
         ["("] = {escape = false, close = true, pair = "()"},

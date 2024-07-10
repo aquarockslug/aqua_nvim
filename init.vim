@@ -1,8 +1,8 @@
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'm4xshen/autoclose.nvim'
-Plug 'startup-nvim/startup.nvim',
 Plug 'sbdchd/neoformat'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -15,6 +15,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'karb94/neoscroll.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'EthanJWright/vs-tasks.nvim'
 Plug 'NvChad/nvim-colorizer.lua'
 Plug 'numToStr/Comment.nvim'
 Plug 'akinsho/toggleterm.nvim'
@@ -23,16 +24,17 @@ Plug 'errata-ai/vale'
 Plug 'jesseduffield/lazygit'
 Plug 'rinx/nvim-ripgrep'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 Plug 'tree-sitter/tree-sitter'
 Plug 'tree-sitter/tree-sitter-html'
 Plug 'luckasRanarison/nvim-devdocs'
-Plug 'habamax/vim-godot'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'tadmccorkle/markdown.nvim'
 Plug 'ellisonleao/glow.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' 	
 Plug 'echasnovski/mini.tabline'
+Plug 'eoh-bse/minintro.nvim'
 call plug#end()
 
 colorscheme dracula
