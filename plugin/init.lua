@@ -1,21 +1,76 @@
-local vim = vim
+-- AQUA ARCH NEOVIM
+local vim = vim -- avoid undefined var warning
 
+-- PLUGINS
+-- load plugins with vim-plug
+-- local Plug = vim.fn['plug#']
+-- vim.fn["plug#begin"]('~/.local/share/nvim/site/plugged')
+-- Plug('dracula/vim', {as = 'dracula'})
+-- Plug 'nvim-lua/popup.nvim'
+-- Plug 'nvim-lua/plenary.nvim'
+-- Plug 'm3xshen/autoclose.nvim'
+-- Plug 'sbdchd/neoformat'
+-- Plug 'neovim/nvim-lspconfig'
+-- Plug 'hrsh6th/cmp-nvim-lsp'
+-- Plug 'hrsh6th/cmp-buffer'
+-- Plug 'hrsh6th/cmp-path'
+-- Plug 'hrsh6th/cmp-cmdline'
+-- Plug 'hrsh6th/nvim-cmp'
+-- Plug 'L2MON4D3/LuaSnip'
+-- Plug 'saadparwaiz0/cmp_luasnip'
+-- Plug 'karb93/neoscroll.nvim'
+-- Plug 'nvim-treesitter/nvim-treesitter'
+-- Plug 'nvim-telescope/telescope.nvim'
+-- Plug 'EthanJWright/vs-tasks.nvim'
+-- Plug 'NvChad/nvim-colorizer.lua'
+-- Plug 'numToStr/Comment.nvim'
+-- Plug 'akinsho/toggleterm.nvim'
+-- Plug 'mfussenegger/nvim-lint'
+-- Plug 'errata-ai/vale'
+-- Plug 'jesseduffield/lazygit'
+-- Plug 'rinx/nvim-ripgrep'
+-- Plug 'nvim-telescope/telescope-file-browser.nvim'
+-- Plug 'tree-sitter/tree-sitter'
+-- Plug 'tree-sitter/tree-sitter-html'
+-- Plug 'luckasRanarison/nvim-devdocs'
+-- Plug 'kristijanhusak/vim-carbon-now-sh'
+-- Plug 'tadmccorkle/markdown.nvim'
+-- Plug 'ellisonleao/glow.nvim'
+-- Plug 'nvim-lualine/lualine.nvim'
+-- Plug 'nvim-tree/nvim-web-devicons'
+-- Plug 'echasnovski/mini.tabline'
+-- Plug 'eoh-bse/minintro.nvim'
+-- -- TODO: add telescope-fzf-native for faster search
+-- -- Plug 'nvim-telescope/telescope-fzf-native.nvim',
+-- -- { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
+-- vim.call('plug#end')
+
+-- SETUP
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.autochdir = true
+vim.cmd 'colorscheme dracula'
+vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
+vim.cmd 'let mapleader=","'
+
+require("nvim-treesitter").setup({auto_install = true})
+require('markdown').setup()
+require("nvim-devdocs").setup()
+require('Comment').setup()
+require("minintro").setup()
+require('lualine').setup({theme = 'dracula'})
+require('glow').setup({width_ratio = 1, height_ratio = 1})
+require('neoscroll').setup({easing = "quadratic"})
+
+-- TELESCOPE
 require('telescope').setup()
 -- require('vstask').setup()
 require("telescope").load_extension "file_browser"
 -- require('telescope').load_extension "vstask"
 -- require('telescope').load_extension "fzf"
 
-require("nvim-treesitter").setup({auto_install = true})
-require('markdown').setup()
-require("nvim-devdocs").setup()
-require('Comment').setup()
-require("minintro").setup({color = "#5fff87"})
-require('lualine').setup({theme = 'dracula'})
-require('glow').setup({width_ratio = 1, height_ratio = 1})
-require('neoscroll').setup({easing = "quadratic"})
-
--- terminal
+-- TERMINAL
 require("toggleterm").setup {
     shade_terminals = true,
     float_opts = {border = 'curved', height = 5}
@@ -30,7 +85,7 @@ local lazygit = Terminal:new({
 })
 function _lazygit() lazygit:toggle() end
 
--- autoclose
+-- AUTOCLOSE
 require("autoclose").setup({
     keys = {
         ["("] = {escape = false, close = true, pair = "()"},
@@ -54,7 +109,8 @@ require("autoclose").setup({
         auto_indent = true
     }
 })
--- linting
+
+-- LINTING 
 local lint = require('lint')
 lint.linters_by_ft = {
     python = {'pylint'},
@@ -65,14 +121,14 @@ lint.linters_by_ft = {
     lua = {'luacheck'}
 }
 
--- language server
+-- LANGUAGE SERVERS
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
-vim.api.nvim_create_autocmd({"BufWritePost"},
-                            {callback = function() lint.try_lint() end})
+vim.api.nvim_create_autocmd({"BufWritePost"}, -- lint on save
+{callback = function() lint.try_lint() end})
 
--- completion
+-- COMPLETION
 local cmp = require('cmp')
 cmp.setup({
     snippet = {
@@ -89,22 +145,18 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({select = true})
     }),
-    sources = cmp.config.sources({
-        {name = 'nvim_lsp'}, {name = 'luasnip'} -- For luasnip users.
-    }, {{name = 'buffer'}})
+    sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'luasnip'}},
+                                 {{name = 'buffer'}})
 })
-
 cmp.setup.cmdline({'/', '?'}, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {{name = 'buffer'}}
 })
-
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}}),
     matching = {disallow_symbol_nonprefix_matching = false}
 })
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig['tsserver'].setup {capabilities = capabilities}
 lspconfig['pyright'].setup {capabilities = capabilities}

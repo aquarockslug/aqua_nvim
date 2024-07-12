@@ -24,7 +24,6 @@ Plug 'errata-ai/vale'
 Plug 'jesseduffield/lazygit'
 Plug 'rinx/nvim-ripgrep'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 Plug 'tree-sitter/tree-sitter'
 Plug 'tree-sitter/tree-sitter-html'
 Plug 'luckasRanarison/nvim-devdocs'
@@ -36,13 +35,6 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'echasnovski/mini.tabline'
 Plug 'eoh-bse/minintro.nvim'
 call plug#end()
-
-colorscheme dracula
-hi Normal guibg=NONE ctermbg=NONE
-set number
-set relativenumber
-set autochdir
-let mapleader=","
 
 " tmux movement
 map <C-h> :wincmd h<CR>
