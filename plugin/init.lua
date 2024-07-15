@@ -54,11 +54,12 @@ vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
 vim.cmd 'let mapleader=","'
-require("nvim-treesitter").setup({auto_install = true})
-require('markdown').setup()
-require("nvim-devdocs").setup()
+require("autoclose").setup()
 require('Comment').setup()
+require('markdown').setup()
 require("minintro").setup()
+require("nvim-devdocs").setup()
+require("nvim-treesitter").setup({auto_install = true})
 require('lualine').setup({theme = 'dracula'})
 require('glow').setup({width_ratio = 1, height_ratio = 1})
 require('neoscroll').setup({easing = "quadratic"})
@@ -100,32 +101,7 @@ require("telescope").load_extension "file_browser"
 -- require('telescope').load_extension "vstask"
 -- require('telescope').load_extension "fzf"
 
--- AUTOCLOSE
-require("autoclose").setup({
-    keys = {
-        ["("] = {escape = false, close = true, pair = "()"},
-        ["["] = {escape = false, close = true, pair = "[]"},
-        ["{"] = {escape = false, close = true, pair = "{}"},
-
-        [">"] = {escape = true, close = false, pair = "<>"},
-        [")"] = {escape = true, close = false, pair = "()"},
-        ["]"] = {escape = true, close = false, pair = "[]"},
-        ["}"] = {escape = true, close = false, pair = "{}"},
-
-        ['"'] = {escape = true, close = true, pair = '""'},
-        ["'"] = {escape = true, close = true, pair = "''"},
-        ["`"] = {escape = true, close = true, pair = "``"}
-    },
-    options = {
-        disabled_filetypes = {"text"},
-        disable_when_touch = false,
-        touch_regex = "[%w(%[{]",
-        pair_spaces = false,
-        auto_indent = true
-    }
-})
-
--- LINTING 
+-- LINTING
 local lint = require('lint')
 lint.linters_by_ft = {
     python = {'pylint'},
