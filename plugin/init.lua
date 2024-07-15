@@ -1,4 +1,5 @@
 -- AQUA ARCH NEOVIM
+-- The main nvim configuration file
 local vim = vim -- avoid undefined var warning
 
 -- PLUGINS
@@ -53,7 +54,6 @@ vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
 vim.cmd 'let mapleader=","'
-
 require("nvim-treesitter").setup({auto_install = true})
 require('markdown').setup()
 require("nvim-devdocs").setup()
@@ -63,19 +63,11 @@ require('lualine').setup({theme = 'dracula'})
 require('glow').setup({width_ratio = 1, height_ratio = 1})
 require('neoscroll').setup({easing = "quadratic"})
 
--- TELESCOPE
-require('telescope').setup()
--- require('vstask').setup()
-require("telescope").load_extension "file_browser"
--- require('telescope').load_extension "vstask"
--- require('telescope').load_extension "fzf"
-
 -- TERMINAL
 require("toggleterm").setup {
     shade_terminals = true,
     float_opts = {border = 'curved', height = 5}
 }
--- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
     cmd = "lazygit",
@@ -83,7 +75,30 @@ local lazygit = Terminal:new({
     float_opts = {border = 'double', height = 40},
     hidden = true
 })
-function _lazygit() lazygit:toggle() end
+
+-- KEYMAP
+-- function keys
+vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
+vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
+vim.keymap.set('n', '<F3>', ":Telescope current_buffer_fuzzy_find<CR>")
+vim.keymap.set('n', '<F4>', ":Telescope treesitter<CR>")
+vim.keymap.set('n', '<F5>', ":wq<CR>")
+-- movement keys
+-- map <up> <C-w><up>
+-- map <down> <C-w><down>
+-- map <left> <C-w><left>
+-- map <right> <C-w><right>
+-- map <C-h> :wincmd h<CR>
+-- map <C-j> :wincmd j<CR>
+-- map <C-k> :wincmd k<CR>
+-- map <C-l> :wincmd l<CR>
+
+-- TELESCOPE
+require('telescope').setup()
+-- require('vstask').setup()
+require("telescope").load_extension "file_browser"
+-- require('telescope').load_extension "vstask"
+-- require('telescope').load_extension "fzf"
 
 -- AUTOCLOSE
 require("autoclose").setup({

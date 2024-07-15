@@ -47,10 +47,3 @@ map <up> <C-w><up>
 map <down> <C-w><down>
 map <left> <C-w><left>
 map <right> <C-w><right>
-
-" function keys
-map <F1> :lua _lazygit()<CR>
-map <F2> :Neoformat<CR> :w<CR>
-map <F3> :Telescope current_buffer_fuzzy_find<CR>
-map <F4> :Telescope treesitter<CR>
-map <F5> :wq<CR>
