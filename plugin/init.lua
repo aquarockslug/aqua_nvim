@@ -20,26 +20,10 @@ require'lualine'.setup({theme = 'dracula'})
 require'glow'.setup({width_ratio = 1, height_ratio = 1})
 require'neoscroll'.setup({easing = 'quadratic'})
 
--- TERMINAL
-require"toggleterm".setup {
-    shade_terminals = true,
-    float_opts = {border = 'curved', height = 5}
-}
+-- TERMINALS
+require"toggleterm".setup {shade_terminals = true}
 local Terminal = require'toggleterm.terminal'.Terminal
-local lazygit = Terminal:new({
-    cmd = "lazygit",
-    direction = "float",
-    float_opts = {border = 'double', height = 40},
-    hidden = true
-})
-
--- KEYMAP
--- function keys
-vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
-vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
-vim.keymap.set('n', '<F3>', ":Telescope current_buffer_fuzzy_find<CR>")
-vim.keymap.set('n', '<F4>', ":Telescope treesitter<CR>")
-vim.keymap.set('n', '<F5>', ":wq<CR>")
+local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
 
 -- TELESCOPE
 require'telescope'.setup()
@@ -47,6 +31,23 @@ require'telescope'.setup()
 require'telescope'.load_extension 'file_browser'
 -- require('telescope').load_extension "vstask"
 -- require('telescope').load_extension "fzf"
+
+-- KEYMAP
+vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
+vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
+vim.keymap.set('n', '<F3>',
+               ":TermExec direction=vertical dir=./ border=double size=70 cmd='clear'<CR>")
+vim.keymap.set('n', '<F4>', ":DevdocsOpenCurrent<CR>")
+vim.keymap.set('n', '<F5>', ":wq<CR>")
+vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
+vim.keymap.set('n', '<leader>e', ':Texplore<CR>')
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
+vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>')
+vim.keymap.set('n', '<leader>ft', ":Telescope treesitter<CR>")
+vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
+vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
+vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
 
 -- LINTING
 local lint = require 'lint'
