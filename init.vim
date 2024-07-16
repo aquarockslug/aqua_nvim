@@ -1,3 +1,18 @@
+" AQUA ARCH NEOVIM VIMSCRIPT
+" vim-plug and movement keymap
+
+" tmux movement
+map <C-h> :wincmd h<CR>
+map <C-j> :wincmd j<CR>
+map <C-k> :wincmd k<CR>
+map <C-l> :wincmd l<CR>
+
+" nvim movement
+map <up> <C-w><up>
+map <down> <C-w><down>
+map <left> <C-w><left>
+map <right> <C-w><right>
+
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-lua/popup.nvim'
@@ -35,15 +50,3 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'echasnovski/mini.tabline'
 Plug 'eoh-bse/minintro.nvim'
 call plug#end()
-
-" tmux movement
-map <C-h> :wincmd h<CR>
-map <C-j> :wincmd j<CR>
-map <C-k> :wincmd k<CR>
-map <C-l> :wincmd l<CR>
-
-" nvim movement
-map <up> <C-w><up>
-map <down> <C-w><down>
-map <left> <C-w><left>
-map <right> <C-w><right>
