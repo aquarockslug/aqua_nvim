@@ -12,6 +12,7 @@ vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
 vim.cmd 'let mapleader=","'
 require'autoclose'.setup()
 require'Comment'.setup()
+require'todo-comments'.setup()
 require'markdown'.setup()
 require'minintro'.setup()
 require'nvim-devdocs'.setup()
@@ -32,15 +33,21 @@ require'telescope'.load_extension 'file_browser'
 -- require('telescope').load_extension "vstask"
 -- require('telescope').load_extension "fzf"
 
--- KEYMAP
+-- KEYS
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
 vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
-vim.keymap.set('n', '<F3>',
-               ":TermExec direction=vertical dir=./ border=double size=70 cmd='clear'<CR>")
+vim.keymap.set('n', '<F3>', ":Telescope<CR>")
 vim.keymap.set('n', '<F4>', ":DevdocsOpenCurrent<CR>")
 vim.keymap.set('n', '<F5>', ":wq<CR>")
+-- TODO: shift line up or down
+-- TODO: clear search highlighting
+
+-- SHORTCUTS
+vim.keymap.set('n', '<leader>sv', ':vnew<CR>')
+vim.keymap.set('n', '<leader>sh', ':new<CR>')
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>e', ':Texplore<CR>')
+-- telescope shortcuts
 vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
 vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>')
@@ -48,6 +55,8 @@ vim.keymap.set('n', '<leader>ft', ":Telescope treesitter<CR>")
 vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
 vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
+vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>')
+-- TODO: add lsp leader shortcut
 
 -- LINTING
 local lint = require 'lint'

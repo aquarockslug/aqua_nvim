@@ -53,4 +53,5 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons' 	
 Plug 'echasnovski/mini.tabline'
 Plug 'eoh-bse/minintro.nvim'
+Plug 'folke/todo-comments.nvim'
 call plug#end()
