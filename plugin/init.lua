@@ -3,48 +3,43 @@
 local vim = vim -- avoid undefined var warning
 
 -- SETUP
+vim.g.mapleader = ","
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
-vim.cmd 'let mapleader=","'
 require'autoclose'.setup()
 require'Comment'.setup()
 require'todo-comments'.setup()
 require'markdown'.setup()
-require'minintro'.setup()
-require'nvim-devdocs'.setup()
+require'minintro'.setup({color = "#af87ff"})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
-require'glow'.setup({width_ratio = 1, height_ratio = 1})
 require'neoscroll'.setup({easing = 'quadratic'})
 
 -- TERMINALS
 require"toggleterm".setup {shade_terminals = true}
 local Terminal = require'toggleterm.terminal'.Terminal
 local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
+local nap = Terminal:new({cmd = "nap", direction = "float"})
 
 -- TELESCOPE
-require'telescope'.setup()
+require'telescope'.setup({file_ignore_patterns = {"node_modules/"}})
 -- require('vstask').setup()
 require'telescope'.load_extension 'file_browser'
--- require('telescope').load_extension "vstask"
--- require('telescope').load_extension "fzf"
+-- require'telescope'.load_extension 'vstask'
 
 -- KEYS
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
 vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
-vim.keymap.set('n', '<F3>', ":Telescope<CR>")
-vim.keymap.set('n', '<F4>', ":DevdocsOpenCurrent<CR>")
+vim.keymap.set('n', '<F3>', function() nap:toggle() end)
 vim.keymap.set('n', '<F5>', ":wq<CR>")
--- TODO: shift line up or down
--- TODO: clear search highlighting
-
--- SHORTCUTS
-vim.keymap.set('n', '<leader>sv', ':vnew<CR>')
-vim.keymap.set('n', '<leader>sh', ':new<CR>')
+vim.keymap.set('n', 'U', "<C-r>") -- undo
+vim.keymap.set('n', '<leader>k', ":move-2<CR>==") -- shift line down
+vim.keymap.set('n', '<leader>j', ":move+<CR>==") -- shift line up
+vim.keymap.set('n', '<leader>h', ':noh<CR>') -- clear highlighting
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>e', ':Texplore<CR>')
 -- telescope shortcuts
@@ -53,6 +48,7 @@ vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
 vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>')
 vim.keymap.set('n', '<leader>ft', ":Telescope treesitter<CR>")
 vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
+vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
 vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
 vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
 vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>')
