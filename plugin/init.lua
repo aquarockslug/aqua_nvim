@@ -25,12 +25,6 @@ local Terminal = require'toggleterm.terminal'.Terminal
 local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
 local nap = Terminal:new({cmd = "nap", direction = "float"})
 
--- TELESCOPE
-require'telescope'.setup({file_ignore_patterns = {"node_modules/"}})
-require'telescope'.load_extension 'file_browser'
--- require('vstask').setup()
--- require'telescope'.load_extension 'vstask'
-
 -- KEYS
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
 vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")

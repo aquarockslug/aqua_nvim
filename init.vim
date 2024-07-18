@@ -19,6 +19,7 @@ map <C-down> :tabrewind<CR>
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'MunifTanjim/nui.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'm4xshen/autoclose.nvim'
