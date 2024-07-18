@@ -16,7 +16,6 @@ require'markdown'.setup()
 require'minintro'.setup()
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
-require'glow'.setup({width_ratio = 1, height_ratio = 1})
 require'neoscroll'.setup({easing = 'quadratic'})
 
 -- TERMINALS
@@ -26,17 +25,15 @@ local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
 local nap = Terminal:new({cmd = "nap", direction = "float"})
 
 -- TELESCOPE
-require'telescope'.setup()
+require'telescope'.setup({file_ignore_patterns = {"node_modules/"}})
 -- require('vstask').setup()
 require'telescope'.load_extension 'file_browser'
--- require('telescope').load_extension "vstask"
--- require('telescope').load_extension "fzf"
+-- require'telescope'.load_extension 'vstask'
 
 -- KEYMAP
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
 vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
 vim.keymap.set('n', '<F3>', function() nap:toggle() end)
-vim.keymap.set('n', '<F4>', ":DevdocsOpenCurrent<CR>")
 vim.keymap.set('n', '<F5>', ":wq<CR>")
 vim.keymap.set('n', 'U', "<C-r>") -- undo
 vim.keymap.set('n', '<leader>k', ":move-2<CR>==") -- shift line down
