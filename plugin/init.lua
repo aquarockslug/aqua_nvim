@@ -31,7 +31,9 @@ vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
 local nap = Terminal:new({cmd = "nap", direction = "float"})
 vim.keymap.set('n', '<F3>', function() nap:toggle() end)
 
-vim.keymap.set('n', '<F4>', ":wq<CR>")
+local glow = Terminal:new({cmd = "glow", direction = "float"})
+vim.keymap.set('n', '<F4>', function() glow:toggle() end)
+
 vim.keymap.set('n', '<F5>', ":Neoformat<CR> :wq<CR>")
 
 -- LINTING
