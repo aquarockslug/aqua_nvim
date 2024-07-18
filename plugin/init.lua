@@ -27,8 +27,8 @@ local nap = Terminal:new({cmd = "nap", direction = "float"})
 
 -- TELESCOPE
 require'telescope'.setup({file_ignore_patterns = {"node_modules/"}})
--- require('vstask').setup()
 require'telescope'.load_extension 'file_browser'
+-- require('vstask').setup()
 -- require'telescope'.load_extension 'vstask'
 
 -- KEYS
@@ -42,6 +42,8 @@ vim.keymap.set('n', '<leader>j', ":move+<CR>==") -- shift line up
 vim.keymap.set('n', '<leader>h', ':noh<CR>') -- clear highlighting
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>e', ':Texplore<CR>')
+vim.keymap.set('n', '<leader>nv', ':vnew<CR>')
+vim.keymap.set('n', '<leader>nh', ':new<CR>')
 -- telescope shortcuts
 vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
 vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
