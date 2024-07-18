@@ -19,43 +19,26 @@ require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
 require'neoscroll'.setup({easing = 'quadratic'})
 
--- TERMINALS
+-- FUNCTION KEYS
 require"toggleterm".setup {shade_terminals = true}
 local Terminal = require'toggleterm.terminal'.Terminal
-local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
-local nap = Terminal:new({cmd = "nap", direction = "float"})
 
--- KEYS
+local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
+
 vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
+
+local nap = Terminal:new({cmd = "nap", direction = "float"})
 vim.keymap.set('n', '<F3>', function() nap:toggle() end)
-vim.keymap.set('n', '<F5>', ":wq<CR>")
-vim.keymap.set('n', 'U', "<C-r>") -- undo
-vim.keymap.set('n', '<leader>k', ":move-2<CR>==") -- shift line down
-vim.keymap.set('n', '<leader>j', ":move+<CR>==") -- shift line up
-vim.keymap.set('n', '<leader>h', ':noh<CR>') -- clear highlighting
-vim.keymap.set('n', '<leader>t', ':tabnew<CR>')
-vim.keymap.set('n', '<leader>e', ':Texplore<CR>')
-vim.keymap.set('n', '<leader>nv', ':vnew<CR>')
-vim.keymap.set('n', '<leader>nh', ':new<CR>')
--- telescope shortcuts
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
-vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>')
-vim.keymap.set('n', '<leader>ft', ":Telescope treesitter<CR>")
-vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
-vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
-vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
-vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
-vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>')
--- TODO: add lsp leader shortcut
+
+vim.keymap.set('n', '<F4>', ":wq<CR>")
+vim.keymap.set('n', '<F5>', ":Neoformat<CR> :wq<CR>")
 
 -- LINTING
 local lint = require 'lint'
 lint.linters_by_ft = {
     python = {'pylint'},
     javascript = {'eslint'},
-    -- typescript = {'typescript-language-server'},
     json = {'jsonlint'},
     markdown = {'vale'},
     lua = {'luacheck'}
