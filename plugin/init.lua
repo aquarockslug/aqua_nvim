@@ -3,17 +3,17 @@
 local vim = vim -- avoid undefined var warning
 
 -- SETUP
+vim.g.mapleader = ","
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
-vim.cmd 'let mapleader=","'
 require'autoclose'.setup()
 require'Comment'.setup()
 require'markdown'.setup()
-require'minintro'.setup()
+require'minintro'.setup({color = "#af87ff"})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
 require'neoscroll'.setup({easing = 'quadratic'})
