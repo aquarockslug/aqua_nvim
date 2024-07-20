@@ -23,8 +23,8 @@ telescope.setup({
 
         layout_strategy = "flex",
         layout_config = {
-            horizontal = {size = {width = "90%", height = "90%"}},
-            vertical = {size = {width = "90%", height = "90%"}}
+            horizontal = {size = {width = "100%", height = "100%"}},
+            vertical = {size = {width = "100%", height = "100%"}}
         },
         create_layout = function(picker)
             local border = {
