@@ -123,8 +123,8 @@ telescope.setup({
                     Layout.Box({
                         Layout.Box(results, {grow = 1}),
                         Layout.Box(prompt, {size = 3})
-                    }, {dir = "col", size = "50%"}),
-                    Layout.Box(preview, {size = "50%"})
+                    }, {dir = "col", size = "33%"}),
+                    Layout.Box(preview, {size = "66%"})
                 }, {dir = "row"}),
                 minimal = Layout.Box({
                     Layout.Box(results, {grow = 1}),

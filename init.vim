@@ -52,4 +52,5 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'echasnovski/mini.tabline'
 Plug 'eoh-bse/minintro.nvim'
 Plug 'folke/todo-comments.nvim'
+Plug 'luckasRanarison/nvim-devdocs'
 call plug#end()

@@ -14,6 +14,7 @@ require'autoclose'.setup()
 require'Comment'.setup()
 require'todo-comments'.setup()
 require'markdown'.setup()
+require"nvim-devdocs".setup()
 require'minintro'.setup({color = "#af87ff"})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
@@ -31,8 +32,8 @@ vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
 local nap = Terminal:new({cmd = "nap", direction = "float"})
 vim.keymap.set('n', '<F3>', function() nap:toggle() end)
 
-local glow = Terminal:new({cmd = "glow", direction = "float"})
-vim.keymap.set('n', '<F4>', function() glow:toggle() end)
+local buku = Terminal:new({cmd = "oil", direction = "float"})
+vim.keymap.set('n', '<F4>', function() buku:toggle() end)
 
 vim.keymap.set('n', '<F5>', ":Neoformat<CR> :wq<CR>")
 
