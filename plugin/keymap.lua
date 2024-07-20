@@ -18,6 +18,6 @@ vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
 vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
 vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
-vim.keymap.set('n', '<leader>ft', ':TodoTelescope<CR>')
+vim.keymap.set('n', '<leader>fd', ':TodoTelescope<CR>')
 
 -- TODO: add lsp leader shortcuts
