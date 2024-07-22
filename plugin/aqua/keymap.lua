@@ -1,23 +1,32 @@
 -- AQUA ARCH NEOVIM KEYMAP
 local vim = vim -- avoid undefined var warning
 
-vim.keymap.set('n', 'U', "<C-r>") -- undo
-vim.keymap.set('n', '<leader>k', ":move-2<CR>==") -- shift line down
-vim.keymap.set('n', '<leader>j', ":move+<CR>==") -- shift line up
-vim.keymap.set('n', '<leader>h', ':noh<CR>') -- clear highlighting
--- new buffer
-vim.keymap.set('n', '<leader>t', ':Texplore<CR>')
-vim.keymap.set('n', '<leader>e', ':vnew .<CR>')
-vim.keymap.set('n', '<leader>eh', ':new .<CR>')
--- telescope shortcuts
-vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
-vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>')
-vim.keymap.set('n', '<leader>ft', ":Telescope treesitter<CR>")
-vim.keymap.set('n', '<leader>fw', ":Telescope current_buffer_fuzzy_find<CR>")
-vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
-vim.keymap.set('n', '<leader>fs', ":Telescope spell_suggest<CR>")
-vim.keymap.set('n', '<leader>fm', ":Telescope man_pages<CR>")
-vim.keymap.set('n', '<leader>fd', ':TodoTelescope<CR>')
+-- leader commands
+for cmd, func in pairs({
+    U = '<C-r>', -- undo
+    k = ':move-2<CR>==', -- shift line down
+    j = ':move+<CR>==', -- shift line up
+    h = ':noh<CR>', -- clear highlighting
+    t = ':Texplore<CR>', -- open netrw in new tab
+    ph = ':Hexplore<CR>', -- open netrw in horizontal pane
+    pv = ':Vexplore<CR>' -- open netrw in vertical pane
+}) do vim.keymap.set('n', '<leader>' .. cmd, func) end
+
+-- telescope commands
+local telescope_prefix = '<leader>f'
+local t = require('telescope')
+local tb = require('telescope.builtin')
+for cmd, func in pairs({
+    b = t.extensions.file_browser.file_browser,
+    f = tb.find_files,
+    o = tb.oldfiles,
+    t = tb.treesitter,
+    w = tb.current_buffer_fuzzy_find,
+    g = tb.live_grep,
+    s = tb.spell_suggest,
+    m = tb.man_pages,
+    j = ':TodoTelescope<CR>',
+    d = ':DevdocsOpenCurrentFloat<CR>'
+}) do vim.keymap.set('n', telescope_prefix .. cmd, func) end
 
 -- TODO: add lsp leader shortcuts

@@ -3,7 +3,7 @@
 local vim = vim -- avoid undefined var warning
 
 -- SETUP
-vim.g.mapleader = ","
+vim.g.mapleader = ','
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -13,29 +13,32 @@ vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
 require'autoclose'.setup()
 require'Comment'.setup()
 require'todo-comments'.setup()
+require'netrw'.setup()
 require'markdown'.setup()
-require"nvim-devdocs".setup()
-require'minintro'.setup({color = "#af87ff"})
+require'nvim-devdocs'.setup()
+require'minintro'.setup({color = '#af87ff'})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
 require'neoscroll'.setup({easing = 'quadratic'})
 
 -- FUNCTION KEYS
-require"toggleterm".setup {shade_terminals = true}
+require'toggleterm'.setup {shade_terminals = true}
 local Terminal = require'toggleterm.terminal'.Terminal
 
-local lazygit = Terminal:new({cmd = "lazygit", direction = "float"})
+local lazygit = Terminal:new({cmd = 'lazygit', direction = 'float'})
 vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
 
-vim.keymap.set('n', '<F2>', ":Neoformat<CR> :w<CR>")
+vim.keymap.set('n', '<F2>', ':Neoformat<CR> :w<CR>')
 
-local nap = Terminal:new({cmd = "nap", direction = "float"})
-vim.keymap.set('n', '<F3>', function() nap:toggle() end)
+local web_search = Terminal:new({cmd = 'ddgr', direction = 'float'})
+vim.keymap.set('n', '<F3>', function() web_search:toggle() end)
 
-local buku = Terminal:new({cmd = "oil", direction = "float"})
+local buku = Terminal:new({cmd = 'oil', direction = 'float'})
 vim.keymap.set('n', '<F4>', function() buku:toggle() end)
 
-vim.keymap.set('n', '<F5>', ":Neoformat<CR> :wq<CR>")
+local nap = Terminal:new({cmd = 'nap', direction = 'float'})
+vim.keymap.set('n', '<F5>', function() nap:toggle() end)
+
 
 -- LINTING
 local lint = require 'lint'
@@ -51,7 +54,7 @@ lint.linters_by_ft = {
 local lspconfig = require 'lspconfig'
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
-vim.api.nvim_create_autocmd({"BufWritePost"}, -- lint on save
+vim.api.nvim_create_autocmd({'BufWritePost'}, -- lint on save
 {callback = function() lint.try_lint() end})
 
 -- COMPLETION

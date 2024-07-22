@@ -25,6 +25,8 @@ telescope.setup({
         layout_config = {
             horizontal = {size = {width = "100%", height = "100%"}},
             vertical = {size = {width = "100%", height = "100%"}}
+            -- TODO: add config for spell suggest
+            -- TODO: add colors
         },
         create_layout = function(picker)
             local border = {

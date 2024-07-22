@@ -38,6 +38,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'EthanJWright/vs-tasks.nvim'
 Plug 'NvChad/nvim-colorizer.lua'
 Plug 'numToStr/Comment.nvim'
+Plug 'prichrd/netrw.nvim' " replace netrw with telescope-file-browser
 Plug 'akinsho/toggleterm.nvim'
 Plug 'mfussenegger/nvim-lint'
 Plug 'errata-ai/vale'
