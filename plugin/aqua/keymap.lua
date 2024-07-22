@@ -8,8 +8,8 @@ for cmd, func in pairs({
     j = ':move+<CR>==', -- shift line up
     h = ':noh<CR>', -- clear highlighting
     t = ':Texplore<CR>', -- open netrw in new tab
-    ph = ':Hexplore<CR>', -- open netrw in horizontal pane
-    pv = ':Vexplore<CR>' -- open netrw in vertical pane
+    o = ':Hexplore<CR>', -- open netrw in horizontal pane
+    v = ':Vexplore<CR>' -- open netrw in vertical pane
 }) do vim.keymap.set('n', '<leader>' .. cmd, func) end
 
 -- telescope commands
