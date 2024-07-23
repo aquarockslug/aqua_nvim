@@ -20,27 +20,7 @@ require'minintro'.setup({color = '#af87ff'})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
 require'neoscroll'.setup({easing = 'quadratic'})
-
--- FUNCTION KEYS
 require'toggleterm'.setup {shade_terminals = true}
-local Terminal = require'toggleterm.terminal'.Terminal
-
-local lazygit = Terminal:new({cmd = 'lazygit', direction = 'float'})
-vim.keymap.set('n', '<F1>', function() lazygit:toggle() end)
-
-vim.keymap.set('n', '<F2>', ':Neoformat<CR> :w<CR>')
-
-local web_search = Terminal:new({
-    cmd = 'ddgr --rev --colors HGgffH',
-    direction = 'float'
-})
-vim.keymap.set('n', '<F3>', function() web_search:toggle() end)
-
-local buku = Terminal:new({cmd = 'oil', direction = 'float'})
-vim.keymap.set('n', '<F4>', function() buku:toggle() end)
-
-local nap = Terminal:new({cmd = 'nap', direction = 'float'})
-vim.keymap.set('n', '<F5>', function() nap:toggle() end)
 
 -- LINTING
 local lint = require 'lint'
