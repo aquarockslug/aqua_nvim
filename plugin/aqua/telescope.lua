@@ -25,56 +25,56 @@ telescope.setup({
         layout_config = {
             horizontal = {size = {width = "100%", height = "100%"}},
             vertical = {size = {width = "100%", height = "100%"}}
-            -- TODO: add more layout configurations 
+            -- TODO: add more layout configurations
         },
         create_layout = function(picker)
             local border = {
                 results = {
-                    top_left = "┌",
-                    top = "─",
-                    top_right = "┬",
-                    right = "│",
+                    top_left = "",
+                    top = "",
+                    top_right = "",
+                    right = "",
                     bottom_right = "",
                     bottom = "",
                     bottom_left = "",
-                    left = "│"
+                    left = ""
                 },
                 results_patch = {
-                    minimal = {top_left = "┌", top_right = "┐"},
-                    horizontal = {top_left = "┌", top_right = "┬"},
-                    vertical = {top_left = "├", top_right = "┤"}
+                    minimal = {top_left = "", top_right = ""},
+                    horizontal = {top_left = "", top_right = ""},
+                    vertical = {top_left = "", top_right = ""}
                 },
                 prompt = {
-                    top_left = "├",
-                    top = "─",
-                    top_right = "┤",
-                    right = "│",
-                    bottom_right = "┘",
-                    bottom = "─",
-                    bottom_left = "└",
-                    left = "│"
+                    top_left = "",
+                    top = "",
+                    top_right = "",
+                    right = "",
+                    bottom_right = "",
+                    bottom = "",
+                    bottom_left = "",
+                    left = ""
                 },
                 prompt_patch = {
-                    minimal = {bottom_right = "┘"},
-                    horizontal = {bottom_right = "┴"},
-                    vertical = {bottom_right = "┘"}
+                    minimal = {bottom_right = ""},
+                    horizontal = {bottom_right = ""},
+                    vertical = {bottom_right = ""}
                 },
                 preview = {
-                    top_left = "┌",
-                    top = "─",
-                    top_right = "┐",
-                    right = "│",
-                    bottom_right = "┘",
-                    bottom = "─",
-                    bottom_left = "└",
-                    left = "│"
+                    top_left = "",
+                    top = "",
+                    top_right = "",
+                    right = "",
+                    bottom_right = "",
+                    bottom = "",
+                    bottom_left = "",
+                    left = ""
                 },
                 preview_patch = {
                     minimal = {},
                     horizontal = {
-                        bottom = "─",
+                        bottom = "",
                         bottom_left = "",
-                        bottom_right = "┘",
+                        bottom_right = "",
                         left = "",
                         top_left = ""
                     },
@@ -82,8 +82,8 @@ telescope.setup({
                         bottom = "",
                         bottom_left = "",
                         bottom_right = "",
-                        left = "│",
-                        top_left = "┌"
+                        left = "",
+                        top_left = ""
                     }
                 }
             }

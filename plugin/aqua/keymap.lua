@@ -14,7 +14,7 @@ vim.keymap.set('n', '<F2>', ':Neoformat<CR> :w<CR>')
 
 -- F3
 local web_search = Terminal:new({
-    cmd = 'ddgr --rev --colors HGgffH',
+    cmd = 'ddgr --rev',
     direction = 'float'
 })
 vim.keymap.set('n', '<F3>', function() web_search:toggle() end)
