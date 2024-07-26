@@ -5,13 +5,16 @@ vim.keymap.set('n', 'U', '<C-r>') -- undo
 
 -- FUNCTION KEYS
 local Terminal = require'toggleterm.terminal'.Terminal
-local floater = function(cmd) return Terminal:new({cmd = cmd, direction = 'float'}) end
+local floater = function(cmd)
+    return Terminal:new({cmd = cmd, direction = 'float'})
+end
 for cmd, func in pairs({
     [1] = function() floater('lazygit'):toggle() end, -- git
     [2] = ':Neoformat<CR> :w<CR>', -- format
     [3] = function() floater('ddgr --rev'):toggle() end, -- web search
     [4] = function() floater('oil'):toggle() end, -- web bookmarks
-    [5] = function() floater('nap'):toggle() end -- notes
+    [5] = function() floater('nap'):toggle() end, -- notes
+    [6] = function() floater('nap $(nap list | peco) | gum pager'):toggle() end -- view a note
 }) do vim.keymap.set('n', '<F' .. cmd .. '>', func) end
 
 -- LEADER SHORTCUTS
@@ -39,7 +42,7 @@ for cmd, func in pairs({
     o = tb.oldfiles,
     s = tb.spell_suggest,
     t = tb.treesitter,
-    w = tb.current_buffer_fuzzy_find,
+    w = tb.current_buffer_fuzzy_find
 }) do vim.keymap.set('n', telescope_prefix .. cmd, func) end
 
 -- TODO: add lsp leader shortcuts
