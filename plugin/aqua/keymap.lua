@@ -2,6 +2,8 @@
 local vim = vim -- avoid undefined var warning
 
 vim.keymap.set('n', 'U', '<C-r>') -- undo
+
+-- MOVEMENT SHORTCUTS
 vim.keymap.set('n', '<up>', '<C-w><up>')
 vim.keymap.set('n', '<down>', '<C-w><down>')
 vim.keymap.set('n', '<left>', '<C-w><left>')
