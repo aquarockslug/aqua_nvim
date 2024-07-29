@@ -10,7 +10,7 @@ vim.opt.relativenumber = true
 vim.opt.autochdir = true
 vim.opt.mousescroll = 'ver:1' -- fix scrolling issue with mini.animate
 vim.cmd.colorscheme'dracula'
-vim.cmd 'hi Normal guibg=NONE ctermbg=NONE' -- no background color
+vim.cmd.highlight({'Normal', 'guibg=NONE', 'ctermbg=NONE'}) -- no background color
 
 require'mini.ai'.setup()
 require'mini.animate'.setup()
