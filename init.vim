@@ -1,22 +1,6 @@
 " AQUA ARCH NEOVIM VIMSCRIPT
 " vim-plug and movement keymap
 
-" tmux movement
-map <C-h> :wincmd h<CR>
-map <C-j> :wincmd j<CR>
-map <C-k> :wincmd k<CR>
-map <C-l> :wincmd l<CR>
-
-" nvim movement
-map <up> <C-w><up>
-map <down> <C-w><down>
-map <left> <C-w><left>
-map <right> <C-w><right>
-map <C-right> :tabnext<CR>
-map <C-left> :tabprevious<CR>
-map <C-up> :tabs<CR>
-map <C-down> :tabrewind<CR>
-
 call plug#begin('~/.local/share/nvim/site/plugged')
 Plug 'echasnovski/mini.animate'
 Plug 'echasnovski/mini.ai' " va
