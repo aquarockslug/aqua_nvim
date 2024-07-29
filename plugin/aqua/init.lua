@@ -10,16 +10,25 @@ vim.opt.relativenumber = true
 vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
-require'autoclose'.setup()
-require'Comment'.setup()
+
+require'mini.animate'.setup() -- TODO: fix scrolling
+require'mini.ai'.setup()
+require'mini.comment'.setup()
+require'mini.pairs'.setup()
+require'mini.splitjoin'.setup()
+require'mini.surround'.setup()
+require'mini.tabline'.setup()
+require'mini.notify'.setup()
+require'mini.trailspace'.setup()
+require'mini.indentscope'.setup()
+
+require'minintro'.setup({color = '#af87ff'})
 require'todo-comments'.setup()
 require'netrw'.setup()
 require'markdown'.setup()
 require'nvim-devdocs'.setup()
-require'minintro'.setup({color = '#af87ff'})
 require'nvim-treesitter'.setup({auto_install = true})
 require'lualine'.setup({theme = 'dracula'})
-require'neoscroll'.setup({easing = 'quadratic'})
 require'toggleterm'.setup {shade_terminals = true}
 
 -- LINTING

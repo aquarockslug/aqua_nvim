@@ -33,7 +33,7 @@ telescope.setup({
                     top_left = "",
                     top = "",
                     top_right = "",
-                    right = "",
+                    right = " ",
                     bottom_right = "",
                     bottom = "",
                     bottom_left = "",
