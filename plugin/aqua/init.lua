@@ -11,34 +11,34 @@ vim.opt.autochdir = true
 vim.cmd 'colorscheme dracula'
 vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
 
-require'mini.animate'.setup() -- TODO: fix scrolling
 require'mini.ai'.setup()
+require'mini.animate'.setup() -- TODO: fix scrolling
 require'mini.comment'.setup()
+require'mini.indentscope'.setup({symbol = vim.g.mapleader})
+require'mini.notify'.setup()
 require'mini.pairs'.setup()
 require'mini.splitjoin'.setup()
 require'mini.surround'.setup()
 require'mini.tabline'.setup()
-require'mini.notify'.setup()
 require'mini.trailspace'.setup()
-require'mini.indentscope'.setup()
 
-require'minintro'.setup({color = '#af87ff'})
-require'todo-comments'.setup()
-require'netrw'.setup()
+require'lualine'.setup({theme = 'dracula'})
 require'markdown'.setup()
+require'minintro'.setup({color = '#af87ff'})
+require'netrw'.setup()
 require'nvim-devdocs'.setup()
 require'nvim-treesitter'.setup({auto_install = true})
-require'lualine'.setup({theme = 'dracula'})
+require'todo-comments'.setup()
 require'toggleterm'.setup {shade_terminals = true}
 
 -- LINTING
 local lint = require 'lint'
 lint.linters_by_ft = {
-    python = {'pylint'},
     javascript = {'eslint'},
     json = {'jsonlint'},
+    lua = {'luacheck'},
     markdown = {'vale'},
-    lua = {'luacheck'}
+    python = {'pylint'}
 }
 
 -- LANGUAGE SERVERS
