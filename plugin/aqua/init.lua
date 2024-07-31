@@ -2,6 +2,11 @@
 -- The main nvim configuration file
 local vim = vim -- avoid undefined var warning
 
+-- local Plug = vim.fn['plug#']
+-- vim.call('plug#begin')
+-- Plug 'echasnovski/mini.animate'
+-- vim.call('plug#end')
+
 -- SETUP
 vim.g.mapleader = ','
 vim.opt.termguicolors = true
@@ -9,7 +14,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.autochdir = true
 vim.opt.mousescroll = 'ver:1' -- fix scrolling issue with mini.animate
-vim.cmd.colorscheme'dracula'
+vim.cmd.colorscheme('dracula')
 vim.cmd.highlight({'Normal', 'guibg=NONE', 'ctermbg=NONE'}) -- no background color
 
 require'mini.ai'.setup()
