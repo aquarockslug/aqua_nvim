@@ -13,7 +13,7 @@ map <down> <C-w><down>
 map <left> <C-w><left>
 map <right> <C-w><right>
 map <C-right> :tabnext<CR>
-map <C-left> :tabprevious<CR>
+map <C-left> :tabpreviou,<CR>
 map <C-up> :tabs<CR>
 map <C-down> :tabrewind<CR>
 
@@ -26,6 +26,7 @@ Plug 'echasnovski/mini.splitjoin' " gS
 Plug 'echasnovski/mini.surround' " sa
 Plug 'echasnovski/mini.tabline'
 Plug 'echasnovski/mini.indentscope'
+Plug 'echasnovski/mini.jump'
 Plug 'echasnovski/mini.notify'
 Plug 'echasnovski/mini.trailspace' " MiniTrailspace.trim(), make autocmd?
 

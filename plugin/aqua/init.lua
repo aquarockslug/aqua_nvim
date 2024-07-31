@@ -15,6 +15,7 @@ require'mini.ai'.setup()
 require'mini.animate'.setup() -- TODO: fix scrolling
 require'mini.comment'.setup()
 require'mini.indentscope'.setup({symbol = vim.g.mapleader})
+require'mini.jump'.setup()
 require'mini.notify'.setup()
 require'mini.pairs'.setup()
 require'mini.splitjoin'.setup()
@@ -30,6 +31,7 @@ require'nvim-devdocs'.setup()
 require'nvim-treesitter'.setup({auto_install = true})
 require'todo-comments'.setup()
 require'toggleterm'.setup {shade_terminals = true}
+require'colorizer'.setup()
 
 -- LINTING
 local lint = require 'lint'
