@@ -16,6 +16,17 @@ local function make_popup(options)
     return TSLayout.Window(popup)
 end
 
+local blank_borders = {
+                    top_left = "",
+                    top = "",
+                    top_right = "",
+                    right = "",
+                    bottom_right = "",
+                    bottom = "",
+                    bottom_left = "",
+                    left = ""
+                }
+
 telescope.setup({
     defaults = {
         mappings = {i = {["<esc>"] = actions.close, ["<C-u>"] = false}},
@@ -44,48 +55,18 @@ telescope.setup({
                     horizontal = {top_left = "", top_right = ""},
                     vertical = {top_left = "", top_right = ""}
                 },
-                prompt = {
-                    top_left = "",
-                    top = "",
-                    top_right = "",
-                    right = "",
-                    bottom_right = "",
-                    bottom = "",
-                    bottom_left = "",
-                    left = ""
-                },
+                prompt = blank_borders,
                 prompt_patch = {
                     minimal = {bottom_right = ""},
                     horizontal = {bottom_right = ""},
                     vertical = {bottom_right = ""}
                 },
-                preview = {
-                    top_left = "",
-                    top = "",
-                    top_right = "",
-                    right = "",
-                    bottom_right = "",
-                    bottom = "",
-                    bottom_left = "",
-                    left = ""
-                },
+                preview = blank_borders,
                 preview_patch = {
                     minimal = {},
-                    horizontal = {
-                        bottom = "",
-                        bottom_left = "",
-                        bottom_right = "",
-                        left = "",
-                        top_left = ""
-                    },
-                    vertical = {
-                        bottom = "",
-                        bottom_left = "",
-                        bottom_right = "",
-                        left = "",
-                        top_left = ""
-                    }
-                }
+                    horizontal = blank_borders,
+                    vertical = blank_borders
+		}
             }
 
             local results = make_popup({

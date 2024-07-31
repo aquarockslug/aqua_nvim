@@ -8,11 +8,12 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.autochdir = true
-vim.cmd 'colorscheme dracula'
-vim.cmd 'hi Normal guibg=NONE ctermbg=NONE'
+vim.opt.mousescroll = 'ver:1' -- fix scrolling issue with mini.animate
+vim.cmd.colorscheme'dracula'
+vim.cmd.highlight({'Normal', 'guibg=NONE', 'ctermbg=NONE'}) -- no background color
 
 require'mini.ai'.setup()
-require'mini.animate'.setup() -- TODO: fix scrolling
+require'mini.animate'.setup()
 require'mini.comment'.setup()
 require'mini.indentscope'.setup({symbol = vim.g.mapleader})
 require'mini.jump'.setup()
